@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>무지개 텍스트 변환기</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #f9f9f9;
+    }
+    textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+    #output, #preview {
+      white-space: pre-wrap;
+      background: white;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-family: monospace;
+      margin-top: 15px;
+    }
+    #lengthWrapper {
+      font-size: 14px;
+      color: #555;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #warning {
+      color: red;
+      font-size: 14px;
+      margin-left: 10px;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #888;
+      text-align: center;
+    }
+    footer a {
+      color: #888;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>오버워치 무지개 텍스트 변환기 1.0 🌈</h2>
+
+  <textarea id="inputText" rows="3" placeholder="텍스트를 입력하세요...">수고하셨습니다.</textarea>
+
+  <div id="lengthWrapper">
+    <span id="lengthInfo">0 / 15</span>
+    <span id="warning" style="display:none;">⚠ 무지개 텍스트는 15글자까지만 클라이언트에 표시됩니다.</span>
+  </div>
+
+  <div style="margin-top: 10px;">
+    <button onclick="convertText()">🌈 변환</button>
+    <button id="copyBtn" onclick="copyOutput()">📋 복사</button>
+  </div>
+
+  <h3>변환된 텍스트:</h3>
+  <div id="output"></div>
+
+  <h3>미리보기:</h3>
+  <div id="preview"></div>
+
+  <footer>
+    제작자: <strong>오떱이(otteobi)</strong> |
+    GitHub: <a href="https://github.com/owoyi" target="_blank">owoyi</a> |
+    오버워치: <strong>오떱이#3204</strong>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
