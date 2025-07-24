@@ -29,19 +29,33 @@ function hsvToRgb(h, s, v) {
   return r + g + b;
 }
 
-function convertText() {
+function convertText() { // 25.07.24 AM 3:49: 공백은 색 안 입혀지게 수정
   const text = input.value;
-  const length = text.length;
+  const total = text.length;
   let result = '';
   let previewHTML = '';
 
-  for (let i = 0; i < length; i++) {
+  let colorIndex = 0; // 공백은 제외한 색상 인덱스
+
+  for (let i = 0; i < total; i++) {
     const char = text[i];
-    const hue = (i / length) * 360;
+    if (char === ' ') {
+      // 공백은 색상 없이 그대로 추가
+      result += ' ';
+      previewHTML += ' ';
+      continue;
+    }
+
+    const hue = (colorIndex / (text.replace(/ /g, '').length)) * 360;
     const rgb = hsvToRgb(hue, 1, 1);
     result += `<FG${rgb}FF>${char}`;
     previewHTML += `<span style="color:#${rgb}">${char}</span>`;
+    colorIndex++; // 공백이 아닐 때만 색상 인덱스 증가
   }
+
+  output.textContent = result;
+  preview.innerHTML = previewHTML;
+}
 
   output.textContent = result;
   preview.innerHTML = previewHTML;
