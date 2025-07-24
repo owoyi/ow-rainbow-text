@@ -6,38 +6,74 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     body {
-      font-family: Arial, sans-serif;
-      padding: 40px;
-      background: #f9f9f9;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      padding: 0;
+      margin: 0;
+      min-height: 100vh;
+      /* 자연스럽고 은은한 무지개 배경 효과 */
+      background: linear-gradient(120deg, #f4f6fa 0%, #f4f6fa 40%, #ffe3e3 60%, #e3f0ff 80%, #f4f6fa 100%);
+      background-size: 200% 200%;
+      animation: rainbowBG 12s ease-in-out infinite;
+    }
+    @keyframes rainbowBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    .container {
+      max-width: 680px;
+      margin: 40px auto 0 auto;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      padding: 36px 28px 32px 28px;
+    }
+    .notice {
+      background: linear-gradient(90deg, #ffe3e3 0%, #e3f0ff 100%);
+      border-radius: 10px;
+      padding: 14px 20px;
+      margin-bottom: 28px;
+      font-size: 16px;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .notice a {
+      color: #0078ff;
+      font-weight: bold;
+      text-decoration: underline;
+      margin-left: 6px;
+    }
+    h2 {
+      margin-top: 0;
+      margin-bottom: 18px;
+      font-size: 1.5em;
+      color: #222;
+      letter-spacing: -1px;
     }
     textarea {
       width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      margin: 10px 0;
+      font-size: 17px;
       border-radius: 8px;
-      border: 1px solid #ccc;
+      padding: 12px;
+      margin: 10px 0 0 0;
       box-sizing: border-box;
+      border: 1.5px solid #cfd8dc;
+      resize: none;
+      background: #f9fbfd;
+      transition: border 0.2s;
     }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-right: 10px;
-      transition: all 0.3s ease;
-    }
-    #output, #preview {
-      white-space: pre-wrap;
-      background: white;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-family: monospace;
-      margin-top: 15px;
+    textarea:focus {
+      border: 1.5px solid #0078ff;
+      outline: none;
+      background: #fff;
     }
     #lengthWrapper {
       font-size: 14px;
@@ -45,11 +81,56 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-top: 6px;
+      margin-bottom: 2px;
     }
     #warning {
-      color: red;
+      color: #e74c3c;
       font-size: 14px;
       margin-left: 10px;
+    }
+    .btns {
+      margin-top: 18px;
+      display: flex;
+      gap: 10px;
+    }
+    button {
+      font-size: 16px;
+      border-radius: 8px;
+      padding: 10px 18px;
+      border: none;
+      background: #0078ff;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.15s, box-shadow 0.15s;
+      box-shadow: 0 2px 8px rgba(0,120,255,0.07);
+      margin-right: 0;
+    }
+    button:hover, button:focus {
+      background: #005bbd;
+    }
+    #output, #preview {
+      white-space: pre-wrap;
+      background: #f9fbfd;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid #e3e8ee;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      margin-top: 15px;
+      font-size: 15px;
+      min-height: 32px;
+    }
+    #output {
+      white-space: pre;     
+      overflow-x: auto;      
+      word-break: break-all;
+    }
+    h3 {
+      margin-bottom: 6px;
+      margin-top: 28px;
+      font-size: 1.08em;
+      color: #444;
     }
     footer {
       margin-top: 40px;
@@ -64,36 +145,64 @@
     footer a:hover {
       text-decoration: underline;
     }
+    #lengthInfo {
+      color: #555;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 18px 4vw 18px 4vw;
+        margin: 16px 0 0 0;
+      }
+      .notice {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .btns {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="container">
+    <div class="notice">
+      👉 더 다양한 기능이 필요하다면
+      <a href="https://owoyi.github.io/ow-gradient-text/" target="_blank">
+        🎨 오버워치2 그라데이션 텍스트 변환기
+      </a>
+      를 이용해보세요!
+    </div>
 
-  <h2>🌈 오버워치2 무지개 텍스트 변환기 🌈</h2>
+    <h2>🌈 오버워치2 무지개 텍스트 변환기 🌈</h2>
 
-  <textarea id="inputText" rows="3" placeholder="텍스트를 입력하세요..."></textarea>
+    <textarea id="inputText" rows="3" placeholder="텍스트를 입력하세요..."></textarea>
 
-  <div id="lengthWrapper">
-    <span id="lengthInfo">0 / 15</span>
-    <span id="warning" style="display:none;">⚠ 무지개 텍스트는 15글자까지만 클라이언트에 표시됩니다.</span>
+    <div id="lengthWrapper">
+      <span id="lengthInfo">0 / 15</span>
+      <span id="warning" style="display:none;">⚠ 무지개 텍스트는 15글자까지만 클라이언트에 표시됩니다.</span>
+    </div>
+
+    <div class="btns">
+      <button onclick="convertText()">🌈 변환</button>
+      <button id="copyBtn" onclick="copyOutput()">📋 복사</button>
+    </div>
+
+    <h3>변환된 텍스트:</h3>
+    <div id="output"></div>
+
+    <h3>미리보기:</h3>
+    <div id="preview"></div>
+
+    <footer>
+      제작자: <strong>오떱이</strong> |
+      GitHub: <a href="https://github.com/owoyi" target="_blank">owoyi</a> |
+      BattleTag: <strong>오떱이#3204</strong>
+    </footer>
   </div>
-
-  <div style="margin-top: 10px;">
-    <button onclick="convertText()">🌈 변환</button>
-    <button id="copyBtn" onclick="copyOutput()">📋 복사</button>
-  </div>
-
-  <h3>변환된 텍스트:</h3>
-  <div id="output"></div>
-
-  <h3>미리보기:</h3>
-  <div id="preview"></div>
-
-  <footer>
-    제작자: <strong>오떱이</strong> |
-    GitHub: <a href="https://github.com/owoyi" target="_blank">owoyi</a> |
-    BattleTag: <strong>오떱이#3204</strong>
-  </footer>
-
   <script src="script.js"></script>
 </body>
 </html>
