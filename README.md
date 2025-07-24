@@ -7,10 +7,12 @@
 
 ---
 
-## Todo
+## # Todo
 
 - 그라데이션(gradient) 효과를 추가할 예정입니다.
 
-## 스크린샷
+---
+
+## # 스크린샷
 <img width="947" height="495" alt="1" src="https://github.com/user-attachments/assets/bd7d1fcd-640a-471f-99fa-fbb6956faecf" />
 <img width="267" height="56" alt="2" src="https://github.com/user-attachments/assets/88c1fbf6-8e8a-42c6-b866-3cc129631695" />
