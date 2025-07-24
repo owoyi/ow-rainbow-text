@@ -8,7 +8,13 @@ const preview = document.getElementById('preview');
 input.addEventListener('input', () => {
   const len = input.value.length;
   lengthInfo.textContent = `${len} / 15`;
+  lengthInfo.style.color = "#555";
   warning.style.display = len > 15 ? 'inline' : 'none';
+  if (len === 15) {
+    lengthInfo.style.color = "#ff9800";
+  } else if (len > 15) {
+    lengthInfo.style.color = "#e74c3c";
+  }
 });
 
 function hsvToRgb(h, s, v) {
@@ -68,5 +74,5 @@ function copyOutput() {
   });
 }
 
-// 초기 상태 반영
+
 input.dispatchEvent(new Event('input'));
