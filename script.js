@@ -29,7 +29,7 @@ function hsvToRgb(h, s, v) {
   return r + g + b;
 }
 
-function convertText() { // 25.07.24 AM 3:49: 공백은 색 안 입혀지게 수정
+function convertText() {
   const text = input.value;
   const total = text.length;
   let result = '';
@@ -57,9 +57,6 @@ function convertText() { // 25.07.24 AM 3:49: 공백은 색 안 입혀지게 수
   preview.innerHTML = previewHTML;
 }
 
-  output.textContent = result;
-  preview.innerHTML = previewHTML;
-}
 
 function copyOutput() {
   const text = output.textContent;
